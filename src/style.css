@@ -1,0 +1,29 @@
+body {
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding:0;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: auto 1fr;
+}
+
+#code {
+	grid-column: 1;
+	height:100%;
+	width:100%;
+	font-family: 'Courier New', Courier, monospace;
+	tab-size:4;
+}
+
+.header {
+	grid-column: 1/-1;
+	display: flex;
+	align-items: center;
+	gap:10px;
+}
+
+#canvas {
+	grid-column: 2;
+	place-self: stretch stretch;
+}
