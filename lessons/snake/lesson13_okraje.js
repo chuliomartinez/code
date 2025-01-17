@@ -36,19 +36,19 @@ function kresli(sirka, vyska) {
 		jedlox = rand(10);
 		jedloy = rand(10);
 
-		hadx.splice(0, 0, hadx[0]);
-		hady.splice(0, 0, hady[0]);
+		hadx.push(x);
+		hady.push(y);
 		dlzka = dlzka + 1;
-		hlava = hlava + 1;
-	}
+	} else {
 	
-	for (var i = 0; i < dlzka - 1; i++) {
-		hadx[i] = hadx[i + 1];
-		hady[i] = hady[i + 1];
-	}
+		for (var i = 0; i < dlzka - 1; i++) {
+			hadx[i] = hadx[i + 1];
+			hady[i] = hady[i + 1];
+		}
 
-	hadx[hlava] = x;
-	hady[hlava] = y;
+		hadx[hlava] = x;
+		hady[hlava] = y;
+	}
 
 	clearScreen();
 	for (var i = 0; i < dlzka; i++) {
