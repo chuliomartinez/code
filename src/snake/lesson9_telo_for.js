@@ -1,22 +1,30 @@
 /*
-Ked chceme precitat (alebo zapisat) cislo v poli mozme pouzit dalsiu premennu.
-
-	var hadx = [2, 3];
+## Ked chceme precitat (alebo zapisat) cislo v poli mozme pouzit dalsiu premennu.
+```
+	var hadx = [1, 2, 3];
 	hadx[0] = hadx[0] + 1; 
+```
 
 mozme napisat aj takto
-	var hadx = [2, 3];
+```
+	var hadx = [1, 2, 3];
 	var i = 0;
 	hadx[i] = hadx[i] + 1; 
+```
 
-naco to je dobre? Aby sme pouzili cyklus:
+### Načo to je dobre? Keď píšeme cyklus:
+```
+	var hadx = [1, 2, 3];
 	for (var i = 0; i < 3; i = i + 1) {
 		// sem piseme kod
+		hadx[i] = hadx[i] + 1;
 	}
-	
-pouzi for cyklus na kreslenie hada.
+	// po cykle je v hadx [2,3,4]
+```
 
-skus pouzit cyklus na nastavenie pozicie tela.
+### 1. Pouzi for cyklus na kreslenie hada.
+
+### 2. Skus pouzit cyklus na nastavenie pozicie tela.
 
 */
 var hadx = [2, 3];

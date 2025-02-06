@@ -1,8 +1,8 @@
 /*
-Nakresli telo hada pomocou putPixel.
-Telo vzdy nasleduje hlavu, teda bude tam kde bola predtym hlava.
+## Nakresli telo hada pomocou funkcie putPixel.
 
-Pomocnik:
+### Pomocnik:
+Telo vzdy nasleduje hlavu, teda bude tam kde bola predtym hlava.  
 Odloz si poziciu hlavy predtym ako sa zmeni x,y.
 
 */

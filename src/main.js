@@ -6,9 +6,10 @@ function main() {
 	const SCALE = 20;
 	let SPEED = 300;
 	const canvas = document.getElementById('canvas');
+	const lessonText = document.getElementById('lessonText');
 	const ctx = canvas.getContext('2d');
-	canvas.width = canvas.offsetWidth;
-	canvas.height = canvas.offsetHeight;
+	canvas.width = canvas.clientWidth;
+	canvas.height = canvas.clientHeight;
 
 	function putPixel(x, y, color) {
 		ctx.fillStyle = color;
@@ -71,7 +72,7 @@ function main() {
 		//console.log('xx');
 		const w = canvas.width / SCALE | 0;
 		const h = canvas.height / SCALE | 0;
-		evalResult.kresli(w, h);
+		evalResult.kresli(w, h, SCALE, ctx);
 		paintGrid();
 		tm = window.setTimeout(paintFrame, SPEED);
 	}
@@ -80,6 +81,9 @@ function main() {
 		//startBtn.disabled = !!tm;
 		stopBtn.disabled = !tm;
 		btnGrid.innerHTML = gridVisible ? "Schovaj Mriezku" : "Zobraz Mriezku";
+
+		document.body.classList.toggle("playing", !!tm);
+		document.body.classList.toggle("stopped", !tm);
 	}
 
 	const startGame = (e) => {
@@ -185,14 +189,23 @@ return __evalResult;
 		{ name: "lesson11_jedlo.js", label: "Kreslíme jedlo" },
 		{ name: "lesson12_jedlo_zjest.js", label: "Had chce jesť" },
 		{ name: "lesson13_okraje.js", label: "Had a okraje" },
-		{ name: "lesson14_pole_zmaz.js", label: "Zjednodušime kreslenie" },
+		{ name: "lesson14_pole_zmaz.js", label: "Zjednodušme kreslenie" },
 	];
 
 	const setCodeFromLessons = async(index, solution = false) => {
 		stopGame();
 		const url = "snake/" + lessons[index].name + (solution ? "x" : "");
 		const resp = await fetch(url);
-		const text = await resp.text();
+		let text = await resp.text();
+
+		if (text.startsWith("/*")) {
+			const end = text.indexOf("*/");
+			const lt = text.substring(2, end);
+			text = text.substring(end + 3);
+			const mk = marked.parse(lt);
+			lessonText.innerHTML = mk;
+		}
+
 		code.value = text;
 	}
 

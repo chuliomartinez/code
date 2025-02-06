@@ -1,14 +1,16 @@
 /*
-Podmienka vykona nasledujuci kod iba ak je pravdiva.
-
+## Podmienka vykona nasledujuci kod iba ak je pravdiva.
+```
 if (test)
-	vyraz
-
-takto sa pouziva: 
+	prikaz
+```
+### Takto sa používa: 
+```
     if (x > 20)
 		x = 0;
+```
 		
-pouzi podmienku aby had neusiel z obrazovky
+### Použi podmienku aby had neušiel z obrazovky.
 */
 var x = 0;
 

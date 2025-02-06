@@ -1,18 +1,20 @@
 /*
-Pole vie rast (a zmensovat sa). Na pridavanie cisiel do pola su tieto metody.
+## Pole vie rast (a zmensovat sa). Na pridavanie cisiel do pola su tieto metody.
 
-pouzitie:
+### Takto sa používajú:
+```
 	var pole = [2];
-	pole.push(3); // pridaj 3 na koniec [2,3]
-	pole.unshift(1); // pridaj 1 na zaciatok [1,2,3]
-	pole.pop(); odober posledny [1,2]
-	pole.unshift(); odober prvy [2]
+	pole.push(3); 		// pridaj 3 na koniec 	[2,3]
+	pole.unshift(1); 	// pridaj 1 na zaciatok [1,2,3]
+	pole.pop(); 		// odober posledny 		[1,2]
+	pole.unshift(); 	// odober prvy 			[2]
+```
 
-Ked je hlava hada na rovnakej pozicii ako jedlo, had narastie o jeden clanok.
+### Uprav kod tak, ze ked je hlava hada na rovnakej pozicii ako jedlo, had narastie o jeden clanok.
 
-Pomocnik:
-	Had moze narast tak ze clanky sa nepohnu, ale iba pridame x,y ako novu hlavu.
-	Ak chceme overit dve podmienky naraz pouzije spojime ich cez && (a sucasne).
+### Pomocnik:
+Had moze narast tak ze clanky sa nepohnu, ale iba pridame x,y ako novu hlavu.
+Ak chceme overit dve podmienky naraz pouzije spojime ich cez && (a sucasne).
 
 */
 var hadx = [1, 2, 3];

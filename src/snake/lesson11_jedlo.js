@@ -1,10 +1,16 @@
 /*
-Funkcia rand vrati nahodne cislo, od 0 po maximum. 
+## Funkcia rand vrati nahodne cislo, od 0 po maximum. 
 
-takto sa pouziva: 
+```
+	rand(max)
+```
+
+### Takto sa pouziva: 
+```
     var jedlox = rand(10); // nahodne 0 az 9 
+```
 
-Vyuzi funkciu rand, nove premenne a putPixel aby si nakreslil jedlo.
+### 1. Vyuzi funkciu rand, nove premenne a putPixel aby si nakreslil jedlo.
 Jedlo bude pixel zelenej farby.
 
 */

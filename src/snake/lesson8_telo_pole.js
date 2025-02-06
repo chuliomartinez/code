@@ -1,13 +1,19 @@
 /*
-Pole je premenna do ktorej si odlozime lubovolne mnozstvo cisiel.
+## Pole je premenna do ktorej si odlozime lubovolne mnozstvo cisiel.
 
-takto sa vytvara: 
+### Takto sa vytvára: 
+```
 	var hadx = [2, 3];
+```
 
-takto sa pouziva
-	hadx[0] = hadx[0] + 1;
+### Takto sa používa
+```
+	hadx[0] = hadx[0] + 1; 
+```
 
-Prve cislo je na pozicii 0, druhe na 1 atd.
+### Pomocnik:
+Do pola pristupujeme od 0.  
+Prve cislo v poli je na pozicii 0, druhe na 1 atd.
 */
 var x = 3;
 var y = 0;

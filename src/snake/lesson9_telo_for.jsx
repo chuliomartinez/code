@@ -4,7 +4,8 @@ var dlzka = 2;
 var smer = "ArrowRight";
 
 function kresli() {
-	var x = hadx[1]; // prve cislo je chvost na 0, druhe na 1, atd. pocitame od chvosta
+// na jednotke je hlava, na nule je chvost
+	var x = hadx[1];
 	var y = hady[1];
 	if (smer == "ArrowRight")
 		x = x + 1;

@@ -1,15 +1,17 @@
 /*
-Premenna je miesto, v ktorom si odlozime cislo.
+## Premenná je miesto, v ktorom si odložíme číslo.
 
-var x;
+`	var x;`
 
-takto sa pouziva: 
+### takto sa používa: 
+```
    var x = 0;
    x = x + 1;
+```
 
-Skus nahradit prvu 4 v putPixel premennou x.
+### 1. Skús nahradiť prvu 4 v putPixel premennou x.
 
-Skus zvysit x pred pouzitim putPixel
+### 2. Skús zvýšiť x pred pouzitim putPixel
 
 */
 

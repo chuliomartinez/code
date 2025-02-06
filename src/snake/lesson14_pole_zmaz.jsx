@@ -33,8 +33,8 @@ function kresli(sirka, vyska) {
 	// mnam mnam had nasiel jedlo
 	if (x == jedlox && y == jedloy) {
 		// nove jedlo
-		jedlox = rand(10);
-		jedloy = rand(10);
+		jedlox = rand(sirka);
+		jedloy = rand(vyska);
 	} else {
 		hadx.shift();
 		hady.shift();

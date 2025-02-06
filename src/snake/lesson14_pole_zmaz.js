@@ -1,9 +1,12 @@
 /*
-Skus zjednodusit kod pohybu hada.
+## Zjednodušme kreslenie.
 
-Pomocnik:
-	Co keby sme vzdy pridali novy clanok ako hlavu hada (ako ked had zje jdelo). 
-	A posledny vymazali ak jedlo nenasiel.
+### Skus zjednodusit kod pohybu hada.
+
+### Pomocnik:
+Vymaz for-cyklus ktory posuva clanky hada.  
+Pridaj novy clanok ako hlavu hada (ako ked had je jedlo).   
+A posledny clanok vymaz iba ak jedlo nenasiel.
 
 */
 var hadx = [1, 2, 3];
@@ -41,8 +44,8 @@ function kresli(sirka, vyska) {
 	// mnam mnam had nasiel jedlo
 	if (x == jedlox && y == jedloy) {
 		// nove jedlo
-		jedlox = rand(10);
-		jedloy = rand(10);
+		jedlox = rand(sirka);
+		jedloy = rand(vyska);
 
 		hadx.push(x);
 		hady.push(y);

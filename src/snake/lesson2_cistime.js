@@ -1,14 +1,14 @@
 /*
-Ak chceme vycistit obrazovku, pouzijeme funkciu
+## Ak chceme vycistit obrazovku, pouzijeme funkciu
 
-clearScreen
+`clearScreen`
 
-takto sa pouziva: 
-    clearScreen();
-
-pouzi clearScreen aby had nezanechal stopu
+### takto sa pouziva: 
+```
+	clearScreen();
+```
+### Použi clearScreen aby had nezanechal stopu.
 */
-
 var x = 0;
 
 function kresli() {

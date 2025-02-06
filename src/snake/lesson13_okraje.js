@@ -1,14 +1,17 @@
 /*
-Hra posiela velkost hracej plochy ako do funkcie kresli, ako sirka a vyska.
+## Hra posiela velkost hracej plochy ako do funkcie kresli, ako sirka a vyska.
 
+```
 	function kresli(sirka, vyska)
+```
 
-Pouzi tieto premenne aby had pokracoval 
-	- z lava ked je na pravom okraji
-	- z prava ked je na lavom okraji
+### Pouzi sirku a vysku v podmienkach aby had pokracoval 
+1. zľava ked je na pravom okraji
+1. sprava ked je na lavom okraji
+1. zhora ked je na spodnom okraji
+1. zdola ked je na hornom okraji
 
 */
-
 var hadx = [1, 2, 3];
 var hady = [2, 2, 2];
 var smer = "ArrowRight";

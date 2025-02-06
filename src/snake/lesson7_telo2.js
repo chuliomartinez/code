@@ -1,8 +1,8 @@
 /*
-Pridaj hadovi aj chvost. 
+## Pridaj hadovi aj chvost. 
 
-Pomocnik:
-chvost bude tam kde bolo predtym telo.
+### Pomocnik:
+Chvost bude tam kde bolo predtym telo.
 */
 var x = 3;
 var y = 0;

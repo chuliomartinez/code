@@ -1,13 +1,13 @@
 /*
-Ked stlacime klaves, spusti sa funckia 
-
+## Keď stlačíme kláves, spustí sa funkcia 
+```
 klaves(ktory)
+```
 
-vytvor funkciu a uloz ktory klaves sa stlacil do premennej. 
-Pouzi podmienku aby si zvysil alebo znizil x podla toho ci sa stlacil klaves ArrowRight alebo ArrowLeft
+### 1. Vytvor funkciu a ulož ktorý kláves sa stlačil do premennej. 
+### 2. Použi podmienku aby si zvýšil alebo znížil x podľa toho či sa stlacil kláves ArrowRight alebo ArrowLeft
 
 */
-
 var x = 0;
 
 function kresli() {

@@ -1,11 +1,13 @@
 /*
-Dlzku pola si nemusime pamatat, pole vie svoju dlzku.
+## Dlzku pola si nemusime pamatat, pole vie svoju dlzku.
 
-takto sa pouziva
+### Takto sa pouziva
+```
 	var hadx = [2, 3];
 	var dlzka = hadx.length; // 2
+```
 
-Pouzi length a sprav hada ktory ma 3 (alebo viac:) clankov.
+### Pouzi length a sprav hada ktory ma 3 (alebo viac:) clankov.
 */
 var hadx = [2, 3];
 var hady = [2, 2];
@@ -13,7 +15,8 @@ var dlzka = 2;
 var smer = "ArrowRight";
 
 function kresli() {
-	var x = hadx[1]; // prve cislo je chvost na 0, druhe na 1, atd. pocitame od chvosta
+// na jednotke je hlava, na nule je chvost
+	var x = hadx[1];
 	var y = hady[1];
 	if (smer == "ArrowRight")
 		x = x + 1;
