@@ -8,8 +8,17 @@ if (test)
 ```
     if (x > 20)
 		x = 0;
+	else if(x < 0)
+		x = 20;
 ```
-		
+
+Porovnanie na rovnost su dve **rovna-sa**. Obycajne **rovna-sa** pouzivame na priradenie!
+```
+	if (x == 20)
+		x = 0;
+```
+
+
 ### Použi podmienku aby had neušiel z obrazovky.
 */
 var x = 0;

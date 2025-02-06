@@ -190,6 +190,8 @@ return __evalResult;
 		{ name: "lesson12_jedlo_zjest.js", label: "Had chce jesť" },
 		{ name: "lesson13_okraje.js", label: "Had a okraje" },
 		{ name: "lesson14_pole_zmaz.js", label: "Zjednodušme kreslenie" },
+		{ name: "lesson15_smer_hada.js", label: "Smer hada" },
+		{ name: "lesson16_had_object.js", label: "Had ako object" },
 	];
 
 	const setCodeFromLessons = async(index, solution = false) => {

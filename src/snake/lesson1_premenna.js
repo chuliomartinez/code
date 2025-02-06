@@ -3,11 +3,12 @@
 
 `	var x;`
 
-### takto sa používa: 
+### Takto sa používa: 
 ```
-   var x = 0;
+   var x = 0; 
    x = x + 1;
 ```
+**Rovna-sa** znamena prirad pravu stranu do premenej na lavo. 
 
 ### 1. Skús nahradiť prvu 4 v putPixel premennou x.
 
