@@ -4,7 +4,7 @@ var smer = "ArrowLeft";
 function kresli() {
 	if (smer == "ArrowRight")
 		x = x + 1;
-	else if (ktory == "ArrowLeft")
+	else if (smer == "ArrowLeft")
 		x = x - 1;
 
 	clearScreen();

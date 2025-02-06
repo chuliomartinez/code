@@ -1,4 +1,4 @@
 
 function kresli() {
-  putPixel(4,4,"red");
+  putPixel(4, 4, "red");
 }
