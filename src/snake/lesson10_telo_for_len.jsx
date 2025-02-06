@@ -18,7 +18,7 @@ function kresli() {
 	else
 		return; // nerob nic ked sa nehybeme
 
-	for (var i = 0; i < dlzka - 1; i++) {
+	for (var i = 0; i < hlava; i++) {
 		hadx[i] = hadx[i + 1];
 		hady[i] = hady[i + 1];
 	}

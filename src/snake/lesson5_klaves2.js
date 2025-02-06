@@ -1,5 +1,12 @@
+/*
+Aby si vedel pohybovat hadom hore a dole pridaj podmienku ktora testuje smer
+"ArrowUp" a "ArrowDown".
+
+Pridaj premennu y, ktora funguje podobne ako premenna x. 
+
+*/
 var x = 0;
-var smer = "ArrowLeft";
+var smer = "ArrowRight";
 
 function kresli() {
 	if (smer == "ArrowRight")

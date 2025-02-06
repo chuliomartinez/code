@@ -85,6 +85,7 @@ function main() {
 	const startGame = (e) => {
 	
 		stopGame();
+		clearScreen();
 
 		try {
 			let tt = code.value;
@@ -161,12 +162,69 @@ return __evalResult;
 			e.preventDefault();
 			e.stopPropagation();
 		}
-	})
+	});
 
 	startBtn.addEventListener("click", startGame);
 	stopBtn.addEventListener('click', stopGame);
 	btnGrid.addEventListener('click', showGrid);
 	updateButtons();
+
+	const lessons = [
+		{ name: "lesson_init.js", label: "Začíname" },
+		{ name: "lesson0_kreslime.js", label: "Kreslíme pixel" },
+		{ name: "lesson1_premenna.js", label: "Premenná" },
+		{ name: "lesson2_cistime.js", label: "Čistíme obrazovku" },
+		{ name: "lesson3_podmienka.js", label: "Podmienka" },
+		{ name: "lesson4_klaves.js", label: "Stlačený kláves", init: 3 },
+		{ name: "lesson5_klaves2.js", label: "Stlačený kláves 2" },
+		{ name: "lesson6_telo.js", label: "Telo hada" },
+		{ name: "lesson7_telo2.js", label: "Telo a chvost hada" },
+		{ name: "lesson8_telo_pole.js", label: "Telo ako pole" },
+		{ name: "lesson9_telo_for.js", label: "Kreslíme telo cez for cyklus" },
+		{ name: "lesson10_telo_for_len.js", label: "Kreslíme telo, dĺžka pola" },
+		{ name: "lesson11_jedlo.js", label: "Kreslíme jedlo" },
+		{ name: "lesson12_jedlo_zjest.js", label: "Had chce jesť" },
+		{ name: "lesson13_okraje.js", label: "Had a okraje" },
+		{ name: "lesson14_pole_zmaz.js", label: "Zjednodušime kreslenie" },
+	];
+
+	const setCodeFromLessons = async(index, solution = false) => {
+		stopGame();
+		const url = "snake/" + lessons[index].name + (solution ? "x" : "");
+		const resp = await fetch(url);
+		const text = await resp.text();
+		code.value = text;
+	}
+
+	let oldText = "";
+	const chooseLesson = async (e) => {
+		oldText = "";
+		let index = +e.target.value;
+		await setCodeFromLessons(index);
+	}
+
+	const lessonCombo = document.getElementById("selLesson");
+	lessonCombo.addEventListener("change", chooseLesson);
+
+	document.getElementById('btnResult').addEventListener("click", () => {
+		if (oldText) {
+			code.value = oldText;
+			oldText = "";
+		} else {
+			oldText = code.value;
+			const index = +lessonCombo.value;
+			setCodeFromLessons(index, true);
+		}
+	})
+
+	for (let i = 1; i < lessons.length; i++) {	
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = "" + i + ". " + lessons[i].label;
+		lessonCombo.appendChild(opt);
+	}
+
+	setCodeFromLessons(1);
 }
 
 window.onload = main;

@@ -1,3 +1,11 @@
+/*
+Skus zjednodusit kod pohybu hada.
+
+Pomocnik:
+	Co keby sme vzdy pridali novy clanok ako hlavu hada (ako ked had zje jdelo). 
+	A posledny vymazali ak jedlo nenasiel.
+
+*/
 var hadx = [1, 2, 3];
 var hady = [2, 2, 2];
 var smer = "ArrowRight";
@@ -35,15 +43,23 @@ function kresli(sirka, vyska) {
 		// nove jedlo
 		jedlox = rand(10);
 		jedloy = rand(10);
+
+		hadx.push(x);
+		hady.push(y);
+		dlzka = dlzka + 1;
 	} else {
-		hadx.splice(0, 1);
-		hady.splice(0, 1);
+	
+		for (var i = 0; i < dlzka - 1; i++) {
+			hadx[i] = hadx[i + 1];
+			hady[i] = hady[i + 1];
+		}
+
+		hadx[hlava] = x;
+		hady[hlava] = y;
 	}
-	hadx.push(x);
-	hady.push(y);
 
 	clearScreen();
-	for (var i = 0; i < hadx.length; i++) {
+	for (var i = 0; i < dlzka; i++) {
 		putPixel(hadx[i], hady[i], "red");
 	}
 
