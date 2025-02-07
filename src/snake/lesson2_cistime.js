@@ -1,9 +1,9 @@
 /*
-## Ak chceme vycistit obrazovku, pouzijeme funkciu
+## Ak chceme vyčistiť obrazovku, použijeme funkciu
 
 `clearScreen`
 
-### takto sa pouziva: 
+### Takto sa používa: 
 ```
 	clearScreen();
 ```

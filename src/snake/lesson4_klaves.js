@@ -5,7 +5,7 @@ klaves(ktory)
 ```
 
 ### 1. Vytvor funkciu a ulož ktorý kláves sa stlačil do premennej. 
-### 2. Použi podmienku aby si zvýšil alebo znížil x podľa toho či sa stlacil kláves ArrowRight alebo ArrowLeft
+### 2. Použi podmienku aby si zvýšil alebo znížil x podľa toho či sa stlačil kláves ArrowRight alebo ArrowLeft
 
 */
 var x = 0;

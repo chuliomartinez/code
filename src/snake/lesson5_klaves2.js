@@ -1,8 +1,8 @@
 /*
-## Aby si vedel pohybovat hadom hore a dole pridaj podmienku ktora testuje smer
+## Aby si vedel pohybovať hadom hore a dole pridaj podmienku, ktorá testuje smer
 "ArrowUp" a "ArrowDown".
 
-### 1.Pridaj premennu y, ktora funguje podobne ako premenna x. 
+### 1.Pridaj premennu y, ktorá funguje podobne ako premenná x. 
 
 */
 var x = 0;

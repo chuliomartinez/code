@@ -1,5 +1,5 @@
 /*
-## Podmienka vykona nasledujuci kod iba ak je pravdiva.
+## Podmienka vykoná nasledujúci príkaz iba ak je pravdivá.
 ```
 if (test)
 	prikaz
@@ -12,12 +12,11 @@ if (test)
 		x = 20;
 ```
 
-Porovnanie na rovnost su dve **rovna-sa**. Obycajne **rovna-sa** pouzivame na priradenie!
+Porovnanie na rovnosť sú dve **rovná-sa**. Obyčajne **rovná-sa** používame na priradenie!
 ```
 	if (x == 20)
 		x = 0;
 ```
-
 
 ### Použi podmienku aby had neušiel z obrazovky.
 */

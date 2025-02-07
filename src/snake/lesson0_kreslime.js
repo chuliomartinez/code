@@ -1,12 +1,12 @@
 /*
-## Na obrazovku kreslime pomocou funkcie
+## Na obrazovku kreslíme pomocou funkcie
 
 `putPixel`
 
-### takto sa pouziva: 
+### Takto sa používa: 
 ` putPixel(pozicia_x, pozicia_y, farba)`
 
-### napriklad:
+### Napríklad:
 ` putPixel(4, 4, "red");`
 
 */

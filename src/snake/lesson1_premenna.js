@@ -8,11 +8,11 @@
    var x = 0; 
    x = x + 1;
 ```
-**Rovna-sa** znamena prirad pravu stranu do premenej na lavo. 
+**Rovná-sa** znamená prirad pravú stranu do premenej na ľavo. 
 
 ### 1. Skús nahradiť prvu 4 v putPixel premennou x.
 
-### 2. Skús zvýšiť x pred pouzitim putPixel
+### 2. Skús zvýšiť x pred použitím putPixel
 
 */
 
