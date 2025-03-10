@@ -11,6 +11,17 @@ body {
 	sans-serif;
 }
 
+#editor {
+	grid-column: 1;
+	display: grid;
+	grid-template-rows: auto 1fr;
+}
+
+/* #btnDocState {
+	place-self: flex-start;
+	margin:2px;
+} */
+
 #code {
 	grid-column: 1;
 	height:100%;
@@ -34,7 +45,8 @@ code {
 .header {
 	grid-column: 1/-1;
 	display: flex;
-	align-items: center;
+	align-items: baseline;
+	flex-wrap: wrap;
 	gap:10px;
 	background-color: #f0f0f0;
 }
@@ -53,6 +65,7 @@ code {
 	margin: 3px;
 	padding: 2px;
 	border: 1px solid #f0f0f0;
+	overflow: auto;
 }
 
 select {
@@ -64,4 +77,22 @@ select {
 }
 .stopped #canvas {
 	display: none;
+}
+
+#code:disabled {
+	border: 1px dotted red;
+}
+
+#docCombo {
+	display: none;
+}
+#btnColabRefresh {
+	display: none;
+}
+
+.teacher #docCombo {
+	display: block;
+}
+.teacher #btnColabRefresh {
+	display: block;
 }

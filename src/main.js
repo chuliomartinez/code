@@ -40,7 +40,7 @@ function main() {
 		tm = 0;
 		evalResult = undefined;
 		updateButtons();
-	} 
+	}
 
 	let gridVisible = false;
 	const showGrid = () => {
@@ -52,20 +52,20 @@ function main() {
 		if (!gridVisible)
 			return;
 		ctx.save();
-        ctx.strokeStyle = "gray";
-        ctx.lineWidth = 0.5;
+		ctx.strokeStyle = "gray";
+		ctx.lineWidth = 0.5;
        
-        for (let x = 0; x < canvas.width/SCALE; x++) {
-          ctx.moveTo(x * SCALE + 0.5, 0.5); 
-          ctx.lineTo(x * SCALE +0.5, canvas.height +0.5);
-          ctx.stroke();
-        }
-        for (let y = 0; y < canvas.height/SCALE; y++) {
-          ctx.moveTo(0.5, y*SCALE + 0.5);
-          ctx.lineTo(canvas.width+0.5, y * SCALE + 0.5);
-          ctx.stroke();
-        }
-        //ctx.strokeRect(0, 0, GAME_WIDTH * SCALE, GAME_HEIGHT * SCALE);
+		for (let x = 0; x < canvas.width / SCALE; x++) {
+			ctx.moveTo(x * SCALE + 0.5, 0.5);
+			ctx.lineTo(x * SCALE + 0.5, canvas.height + 0.5);
+			ctx.stroke();
+		}
+		for (let y = 0; y < canvas.height / SCALE; y++) {
+			ctx.moveTo(0.5, y * SCALE + 0.5);
+			ctx.lineTo(canvas.width + 0.5, y * SCALE + 0.5);
+			ctx.stroke();
+		}
+		//ctx.strokeRect(0, 0, GAME_WIDTH * SCALE, GAME_HEIGHT * SCALE);
 	}
 
 	const paintFrame = () => {
@@ -91,9 +91,13 @@ function main() {
 		stopGame();
 		clearScreen();
 
-		try {
+		//try {
+		{
 			let tt = code.value;
-			const t = `(function x() {
+			const t = `
+var kresli = undefined;
+var klaves = undefined;	
+(function x() {
 ${tt}
 
 let __evalResult = {};
@@ -110,9 +114,9 @@ return __evalResult;
 			tm = window.setTimeout(paintFrame, SPEED);
 			updateButtons();
 		}
-		catch (e) {
-			console.log(e);
-		}
+		//catch (e) {
+		//	console.log(e);
+		//}
 	}
 
 	code.addEventListener("keydown", function (e) {
@@ -131,12 +135,12 @@ return __evalResult;
 		} else if (e.key === 'Enter') {
 			if (end === start) {
 				e.preventDefault();
-				const nl = v.lastIndexOf('\n', start-1);
+				const nl = v.lastIndexOf('\n', start - 1);
 				const line = v.substring(nl + 1, start);
 				const z = line.trim();
 				let ws = 0;
 				let w = "";
-				while (line[ws]==='' || line[ws]==='\t') {
+				while (line[ws] === '' || line[ws] === '\t') {
 					w += line[ws];
 					ws++;
 				}
@@ -174,7 +178,7 @@ return __evalResult;
 	updateButtons();
 
 	const lessons = [
-		{ name: "lesson_init.js", label: "Začíname" },
+		//{ name: "lesson_init.js", label: "Začíname" },
 		{ name: "lesson0_kreslime.js", label: "Kreslíme pixel" },
 		{ name: "lesson1_premenna.js", label: "Premenná" },
 		{ name: "lesson2_cistime.js", label: "Čistíme obrazovku" },
@@ -192,9 +196,10 @@ return __evalResult;
 		{ name: "lesson14_pole_zmaz.js", label: "Zjednodušme kreslenie" },
 		{ name: "lesson15_smer_hada.js", label: "Smer hada" },
 		{ name: "lesson16_had_object.js", label: "Had ako object" },
+		{ name: "lesson17_zaklad.js", label: "Zaklad" },
 	];
 
-	const setCodeFromLessons = async(index, solution = false) => {
+	const setCodeFromLessons = async (index, solution = false) => {
 		stopGame();
 		const url = "snake/" + lessons[index].name + (solution ? "x" : "");
 		const resp = await fetch(url);
@@ -209,6 +214,7 @@ return __evalResult;
 		}
 
 		code.value = text;
+		colab?.on_textarea_changed();
 	}
 
 	let oldText = "";
@@ -232,14 +238,97 @@ return __evalResult;
 		}
 	})
 
-	for (let i = 1; i < lessons.length; i++) {	
-		var opt = document.createElement('option');
-		opt.value = i;
-		opt.innerHTML = "" + i + ". " + lessons[i].label;
-		lessonCombo.appendChild(opt);
+	const setupCombo = (cb, items) => {
+		for (item of items) {
+			var opt = document.createElement('option');
+			opt.value = item.value;
+			opt.innerHTML = item.label;
+			cb.appendChild(opt);
+		}
 	}
 
-	setCodeFromLessons(1);
+	setupCombo(lessonCombo, lessons.map((x, i) => ({ value: i, label: "" + (i + 1) + ". " + lessons[i].label })));
+	// for (let i = 1; i < lessons.length; i++) {	
+	// 	var opt = document.createElement('option');
+	// 	opt.value = i;
+	// 	opt.innerHTML = "" + i + ". " + lessons[i].label;
+	// 	lessonCombo.appendChild(opt);
+	// }
+
+	setCodeFromLessons(0);
+
+
+	// Prepare colab
+	let userid = "miro";
+	let colab = undefined;
+
+	const docCombo = document.getElementById('docCombo');
+	const btnColabState = document.getElementById('btnDocState');
+
+	const onModeChanged = (path, is_editor) => {
+		const btnColabState = document.getElementById('btnDocState');
+		btnColabState.innerHTML = path;// + ' [' + (is_editor ? "upravujem" : "pozeram") + "]";
+		btnColabState.style.background = is_editor ? "" : "#ff474c";
+	}
+
+	const updateStatus = () => {
+		// const info = colab.get_info() || {};
+		// btnColabState.innerHTML = info.path + ' [' + (colab.is_editor() ? "EDIT" : "VIEW") + "]";
+	}
+	const newDocument = async () => {
+		//document.getElementById('btnNewDoc').disabled = true;
+		let name = (window.prompt('Prosim zadaj svoje meno:') || "").trim();
+		name = name.replaceAll('/', '_').toLocaleLowerCase();
+		if (!name) {
+			return;
+		}
+		userid = name;
+		if (userid === "miro") {
+			document.body.classList.add("teacher");
+		} else {
+			btnColabState.disabled = 1;
+		}
+		let path = new Date().toISOString().substring(0, 10) + "/" + userid;
+		// check if exists?
+		colab = window.create_shared_editor(userid, code, onModeChanged);
+		//colab.set_user(userid)
+		const docs = await colab.get_documents();
+		if (docs.indexOf(path) >= 0) {
+			colab.observe_document(path);
+		}
+		else {
+			await colab.create_document(path);
+		}
+
+		updateStatus();
+		updateDocList();
+	}
+			
+	btnColabState.addEventListener('click', () => {
+		if (!colab)
+			newDocument();
+		else
+			colab.toggle_editor();
+	});
+
+	const updateDocList = async () => {
+		const docs = await colab.get_documents();
+		docCombo.innerHTML = '';
+		setupCombo(docCombo, docs.map(x => ({ value: x, label: x })));
+	}
+	
+	document.getElementById('btnColabRefresh').addEventListener('click', updateDocList);
+
+	docCombo.addEventListener('change', () => {
+		// stop edit mode when switching documents.
+		if (colab.is_user_editor())
+			colab.toggle_editor();
+		colab.observe_document(docCombo.value);
+		updateStatus();
+	});
+
+	//document.getElementById('btnNewDoc').addEventListener("click", newDocument)
+	//prepareColab();
 }
 
 window.onload = main;

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+	<script src="colab.js"></script>
 	<script src="main.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,9 +21,18 @@
 		<button id="btnGrid">G</button>
 		
 		<button id="btnResult"><span>😢</span> Ukáž riešenie</button>
+
+		<div>&nbsp;|&nbsp;</div>
+		
+		<!-- <button id="btnNewDoc">New</button> -->
+		<select id="docCombo"></select>
+		<button id="btnColabRefresh">↺</button>
+		<button id="btnDocState">Prihlásiť</button>
 	</div>
-	<textarea id="code">
-	</textarea>
+	<div id="editor">
+		<span></span>
+		<textarea id="code" spellcheck="false"></textarea>
+	</div>
     <canvas id="canvas" style="background:rgb(172, 165, 165)" ></canvas>
 	<div id="lessonText"/>
   
