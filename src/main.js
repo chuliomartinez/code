@@ -197,6 +197,7 @@ return __evalResult;
 		{ name: "lesson15_smer_hada.js", label: "Smer hada" },
 		{ name: "lesson16_had_object.js", label: "Had ako object" },
 		{ name: "lesson17_zaklad.js", label: "Zaklad" },
+		{ name: "lesson18_alien1.js", label: "Votrelec" },
 	];
 
 	const setCodeFromLessons = async (index, solution = false) => {
