@@ -1,9 +1,26 @@
 var color = "red"
+
+function box(vlavo, hore, sirka, vyska, farba) {
+
+	var y = 0;
+	while (y < vyska) {
+
+		var x = 0;
+		while (x < sirka) {
+			putPixel(vlavo + x, hore + y, farba);
+			x = x + 1;
+		}
+
+		y = y + 1;
+	}
+}
+
 function kresli() {
 
 	clearScreen();
 
-	putPixel(4, 4, color);
+	box(2, 2, 10, 10, "green");
+	box(4, 4, 6, 6, "red");
 }
 
 function klaves(ktory) {
