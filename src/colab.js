@@ -29,6 +29,30 @@ const create_shared_editor = (userid, textarea, on_mode_changed) => {
 	//{ expires?: Date, token: string, p?: Promise<string> }
 	const FirebaseToken = { token: "" };
 
+	function strtoarr (str) {
+		return new TextEncoder().encode(str)
+	  }
+	  
+	  function arrtostr (arr) {
+		return new TextDecoder().decode(arr)
+	  }
+	  
+	async function decrypt(cyp, pas, slt) {
+		return new Promise((fnc, e) => {
+			var data = new Uint8Array(cyp)
+			var vector = new Uint8Array(slt)
+			crypto.subtle.digest({ name: 'SHA-256' }, strtoarr(pas)).then((res) => {
+				crypto.subtle.importKey('raw', res, { name: 'AES-CBC' }, false, ['encrypt', 'decrypt']).then((key) => {
+					crypto.subtle.decrypt({ name: 'AES-CBC', iv: vector }, key, data).then((res) => {
+						fnc(arrtostr(res))
+					}, () => {
+						fnc(null)
+					})
+				})
+			})
+		});
+	}
+
 	const getFirebaseToken = () => {
 
 	if (!FirebaseToken.token || !FirebaseToken.expires || FirebaseToken.expires < new Date()) {
@@ -37,12 +61,18 @@ const create_shared_editor = (userid, textarea, on_mode_changed) => {
 		}
 		FirebaseToken.p = new Promise(async (res, rej) => {
 
-			//const apiKey = "AIzaSyDLDUp7wRPdad-qLQN03lIe4AWley1l68o"; // Firebase Project Settings
-			const apiKey = "AIzaSyA-ncrGxs4-1KxYBVAerZGtATMw7cMTAS4";//"AIzaSyDLDUp7wRPdad-qLQN03lIe4AWley1l68o"; // Firebase Project Settings
+			const iv = [96, 109, 233, 180, 105, 64, 11, 115, 100, 31, 66, 135, 201, 244, 80, 173];
+			const pwd = "ZgCHTBPgxXSuSf7IBT1UKuNpCYo";
+			const data = [241, 186, 54, 169, 76, 43, 231, 43, 118, 25, 70, 76, 154, 18, 144, 70, 213, 104, 179, 14, 24, 76, 63, 86, 209, 71, 222, 122, 244, 145, 191, 54, 33, 225, 249, 164, 158, 21, 67, 163, 70, 182, 216, 51, 201, 72, 127, 119, 165, 94, 2, 95, 48, 218, 107, 87, 36, 218, 11, 235, 222, 185, 250, 77, 33, 34, 53, 192, 243, 8, 229, 96, 67, 55, 57, 227, 247, 67, 116, 163, 120, 124, 202, 48, 141, 127, 196, 252, 97, 212, 22, 127, 47, 8, 45, 139];
+			const buf = await decrypt(data, pwd, iv)
+			const b = JSON.parse(buf);
+			console.log("buf=" + buf);
+
+			const apiKey = b.k;
 			const url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + apiKey;
 			const payload = {
-				email: "support@inuko.net",
-				password: "5hfFf4cCkwJ4hJSpWEnNlOtTfrF",
+				email: "code@inuko.net",
+				password: b.p,
 				returnSecureToken: true,
 			};
 			const init = {
