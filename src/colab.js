@@ -26,9 +26,58 @@ const create_shared_editor = (userid, textarea, on_mode_changed) => {
 
 	const SERVER_URL = "https://editor-63150-default-rtdb.europe-west1.firebasedatabase.app/"
 
+	//{ expires?: Date, token: string, p?: Promise<string> }
+	const FirebaseToken = { token: "" };
+
 	const getFirebaseToken = () => {
-		return null;
+
+	if (!FirebaseToken.token || !FirebaseToken.expires || FirebaseToken.expires < new Date()) {
+		if (FirebaseToken.p) {
+			return FirebaseToken.p;
+		}
+		FirebaseToken.p = new Promise(async (res, rej) => {
+
+			//const apiKey = "AIzaSyDLDUp7wRPdad-qLQN03lIe4AWley1l68o"; // Firebase Project Settings
+			const apiKey = "AIzaSyA-ncrGxs4-1KxYBVAerZGtATMw7cMTAS4";//"AIzaSyDLDUp7wRPdad-qLQN03lIe4AWley1l68o"; // Firebase Project Settings
+			const url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + apiKey;
+			const payload = {
+				email: "support@inuko.net",
+				password: "5hfFf4cCkwJ4hJSpWEnNlOtTfrF",
+				returnSecureToken: true,
+			};
+			const init = {
+				"body": JSON.stringify(payload),
+				"method": "POST",
+				"headers": {
+					"Content-Type": "application/json",
+				}
+			}
+			try {
+				const resp = await fetch(url, init);
+				if (!resp.ok) {
+					let msg = "Cannot fetch sse token";
+					try {
+						msg = await resp.text();
+					} catch { }
+					throw Error(msg);
+				}
+				const j = await resp.json();
+		
+				FirebaseToken.token = j.idToken;
+				FirebaseToken.expires = new Date(new Date().valueOf() + j.expiresIn * 900) // ask sooner than exacly as many seconds as reported
+				FirebaseToken.p = undefined;
+
+				res(FirebaseToken.token);
+			}
+			catch (e) {
+				rej(e);
+			}
+		});
+		return FirebaseToken.p;
 	}
+	
+	return new Promise((res) => res(FirebaseToken.token));
+}
 
 	const sse_prepare_url = async (path) => {
 		const token = await getFirebaseToken();
@@ -154,6 +203,7 @@ const create_shared_editor = (userid, textarea, on_mode_changed) => {
 				paths.push(dt + "/" + name);
 			}
 		}
+		paths.sort((a, b) => -a.localeCompare(b));
 		return paths;
 	}
 
