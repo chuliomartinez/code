@@ -204,11 +204,17 @@ const create_shared_editor = (userid, textarea, on_mode_changed) => {
 		return { text: tb.value, selectionStart: tb.selectionStart, selectionEnd: tb.selectionEnd };
 	}
 
+	let timer = 0;
 	const on_textarea_changed = (e) => {
 		if (is_user_editor()) {
-			console.log("on_textarea_changed uploading");
-			const body = make_document_body();
-			sse_patch(doc_state.path + "/body", body);
+			if (!timer) {
+				timer = window.setTimeout(() => {
+					console.log("on_textarea_changed uploading");
+					const body = make_document_body();
+					sse_patch(doc_state.path + "/body", body);
+					timer = 0;
+				}, 1000);
+			}
 		} else {
 			console.log("on_textarea_changed IGNORED");
 			// ignore...
@@ -272,6 +278,7 @@ const create_shared_editor = (userid, textarea, on_mode_changed) => {
 
 			on_mode_changed(doc_state.path, editable);
 
+			window.clearTimeout(timer);
 			doc_state.textarea.removeEventListener('input', on_textarea_changed);
 			doc_state.textarea.removeEventListener('select', on_textarea_changed);
 			if (editable) {

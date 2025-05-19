@@ -3,7 +3,7 @@
 
 
 function main() {
-	const SCALE = 20;
+	const SCALE = 10;
 	let SPEED = 300;
 	const canvas = document.getElementById('canvas');
 	const lessonText = document.getElementById('lessonText');
@@ -198,6 +198,7 @@ return __evalResult;
 		{ name: "lesson16_had_object.js", label: "Had ako object" },
 		{ name: "lesson17_zaklad.js", label: "Zaklad" },
 		{ name: "lesson18_alien1.js", label: "Votrelec" },
+		{ name: "lesson19_raketa.js", label: "Raketa" },
 	];
 
 	const setCodeFromLessons = async (index, solution = false) => {
