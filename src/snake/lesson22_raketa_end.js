@@ -89,6 +89,12 @@ function kresliBitmap(vlavo, hore, bitmap){
 				putPixel(vlavo + x, hore + y, "green");
 			else if (pixel === 'x')
 				putPixel(vlavo + x, hore + y, "black");
+			else if (pixel == 'y')
+				putPixel(vlavo +x, hore + y, "yellow");
+			else if (pixel == 'b')
+				putPixel(vlavo +x, hore + y, "blue");			
+			else if (pixel == 'o')
+				putPixel(vlavo +x, hore + y, "orange");
 			x = x + 1;
 		}
 			
@@ -121,6 +127,15 @@ var laser = `
 ggg
  g
 `
+
+var boom = `
+  y
+ yoy
+yoroy
+ yoy
+  y
+`; 
+
 
 var krok = 1;
 var raketa_x = 10;

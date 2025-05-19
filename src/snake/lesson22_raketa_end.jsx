@@ -89,6 +89,12 @@ function kresliBitmap(vlavo, hore, bitmap){
 				putPixel(vlavo + x, hore + y, "green");
 			else if (pixel === 'x')
 				putPixel(vlavo + x, hore + y, "black");
+			else if (pixel == 'y')
+				putPixel(vlavo +x, hore + y, "yellow");
+			else if (pixel == 'b')
+				putPixel(vlavo +x, hore + y, "blue");			
+			else if (pixel == 'o')
+				putPixel(vlavo +x, hore + y, "orange");
 			x = x + 1;
 		}
 			
@@ -122,6 +128,15 @@ ggg
  g
 `
 
+var boom = `
+  y
+ yoy
+yoroy
+ yoy
+  y
+`; 
+
+
 var krok = 1;
 var raketa_x = 10;
 var raketa_y = 30;
@@ -148,6 +163,7 @@ function kresli() {
 
 	if ((laser_y+4) >= raketa_y && laser_x >= raketa_x && laser_x < raketa_x + 6) {
 		// GAME OVER:(
+			kresliBitmap(raketa_x, raketa_y, boom);
 	}
 	else {
 		kresliBitmap(raketa_x, raketa_y, bitmap);
