@@ -10,14 +10,14 @@
 Premenná je **Šuflík** kam si môžeme odložiť číslo alebo text.
 
 Vytvoríme 
-`var x`
+```var x```
 Priradíme (dáme do šuflíka)
-`var y = 4`
+```var y = 4```
 
-`x`je meno premennej. Keď ho použijeme v programe, nahradí sa aktuálnou hodnotou v šuflíku.
+`x` je meno premennej. Keď ho použijeme v programe, nahradí sa aktuálnou hodnotou v šuflíku.
 
 ### Matematicke
-`y = (9 + 3) * 2`  
+```y = (9 + 3) * 2```  
 `+` `-` `*` `/` ako ste zvyknuty z matematiky. Zatvorky tiez funguju rovnako.
 Medzery pridajte tak aby sa vam dobre citalo. Program ich ignoruje.
 
