@@ -4,7 +4,7 @@
 
 function main() {
 	const SCALE = 10;
-	let SPEED = 300;
+	let SPEED = 100;
 	const canvas = document.getElementById('canvas');
 	const lessonText = document.getElementById('lessonText');
 	const ctx = canvas.getContext('2d');
