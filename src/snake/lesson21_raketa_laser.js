@@ -105,14 +105,37 @@ xxxxx
  r r   
  r r `;  
 
+var raketa2 = `
+  x   
+ xxx  
+ x x  
+ xxx  
+xxxxx 
+   
+ r r   
+ r r `; 
+
+var laser = `
+ g
+ g
+ggg
+ g
+`
+
+var krok = 1;
 var raketa_x = 10;
 var raketa_y = 30;
+var laser_x = 10;
+var laser_y = 0;
 
 function kresli() {
 
 	clearScreen();
 
 	var bitmap = raketa1;
+	if ((krok % 2) === 1)
+		bitmap = raketa2;
+	krok = krok + 1;
 
 	kresliBitmap(raketa_x, raketa_y, bitmap);
 }

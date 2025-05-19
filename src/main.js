@@ -199,6 +199,9 @@ return __evalResult;
 		{ name: "lesson17_zaklad.js", label: "Zaklad" },
 		{ name: "lesson18_alien1.js", label: "Votrelec" },
 		{ name: "lesson19_raketa.js", label: "Raketa" },
+		{ name: "lesson20_raketa_anim.js", label: "Raketa Animacia" },
+		{ name: "lesson21_raketa_laser.js", label: "Raketa Laser" },
+		{ name: "lesson22_raketa_end.js", label: "Raketa GameOver" },
 	];
 
 	const setCodeFromLessons = async (index, solution = false) => {
